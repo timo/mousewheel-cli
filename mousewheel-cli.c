@@ -20,9 +20,14 @@ int main(int argc, char **argv)
   if(!XQueryExtension(dpy, "XTEST", &_, &_, &_)) {
     fprintf(stderr, "XTEST extension is not supported by X server, enable it in your X server configuration."); return 1; }
 
-  if(argv[1][0] != 'u')
-    XTestFakeButtonEvent(dpy, 4, True, 0);
-  else
-    XTestFakeButtonEvent(dpy, 5, True, 0);
+  if(argv[1][0] == 'u')
+  {
+    XTestFakeButtonEvent(dpy, 4, True, CurrentTime);
+    XTestFakeButtonEvent(dpy, 4, False, CurrentTime);
+  } else {
+    XTestFakeButtonEvent(dpy, 5, True, CurrentTime);
+    XTestFakeButtonEvent(dpy, 5, False, CurrentTime);
+  }
+  XFlush(dpy);
   return 0;
 }
