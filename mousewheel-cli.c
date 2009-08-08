@@ -39,10 +39,13 @@ int main(int argc, char **argv)
     if (command[0] == 'u') {
         XTestFakeButtonEvent(dpy, 4, True, CurrentTime);
         XTestFakeButtonEvent(dpy, 4, False, CurrentTime);
-    } else {
+    }
+    else {
         XTestFakeButtonEvent(dpy, 5, True, CurrentTime);
         XTestFakeButtonEvent(dpy, 5, False, CurrentTime);
     }
+
     XFlush(dpy);
+
     return 0;
 }
