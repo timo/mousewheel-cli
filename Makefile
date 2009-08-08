@@ -1,2 +1,9 @@
-default: mousewheel-cli.c
-	$(CC} -o mousewheel-cli -lX11 -lXtst mousewheel-cli.c
+all: mousewheel-cli
+
+%: %.c
+	$(CC) -lX11 -lXtst -o $@ $^
+
+clean:
+	$(RM) mousewheel-cli
+
+.PHONY: clean
