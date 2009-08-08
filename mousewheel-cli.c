@@ -1,16 +1,25 @@
+#include <unistd.h>
 #include <X11/extensions/XTest.h>
 #include <X11/Xlib.h>
 #include <X11/X.h>
 
 #include <stdio.h>
 
+void usage(char *appname)
+{
+  fprintf(stderr, "Usage: %s u/d", appname);
+  _exit(1);
+}
+
 int main(int argc, char **argv)
 {
   if(argc == 1) {
-    fprintf(stderr, "Usage: %s u/d", argv[0]); return 1; }
+      usage(argv[0]);
+  }
 
   if(argv[1][0] != 'u' && argv[1][0] != 'd') {
-    fprintf(stderr, "Usage: %s u/d", argv[0]); return 1; } 
+    usage(argv[0]);
+  }
 
   Display * dpy = XOpenDisplay(NULL);
   if(!dpy) {
