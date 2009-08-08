@@ -1,3 +1,4 @@
+#include <string.h>
 #include <unistd.h>
 #include <X11/extensions/XTest.h>
 #include <X11/Xlib.h>
@@ -17,7 +18,7 @@ int main(int argc, char **argv)
       usage(argv[0]);
   }
 
-  if(argv[1][0] != 'u' && argv[1][0] != 'd') {
+  if ((strcmp(argv[1], "u") != 0) && (strcmp(argv[1], "d") != 0)) {
     usage(argv[0]);
   }
 
