@@ -7,7 +7,7 @@
 
 void usage(char *appname)
 {
-  fprintf(stderr, "Usage: %s u/d", appname);
+  fprintf(stderr, "Usage: %s u/d\n", appname);
   _exit(1);
 }
 
@@ -23,11 +23,11 @@ int main(int argc, char **argv)
 
   Display * dpy = XOpenDisplay(NULL);
   if(!dpy) {
-    fprintf(stderr, "Could not open X display :("); return 1; }
+    fprintf(stderr, "Could not open X display :(\n"); return 1; }
 
   int _;
   if(!XQueryExtension(dpy, "XTEST", &_, &_, &_)) {
-    fprintf(stderr, "XTEST extension is not supported by X server, enable it in your X server configuration."); return 1; }
+    fprintf(stderr, "XTEST extension is not supported by X server, enable it in your X server configuration.\n"); return 1; }
 
   if(argv[1][0] == 'u')
   {
