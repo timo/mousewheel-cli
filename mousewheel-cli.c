@@ -25,14 +25,14 @@ int main(int argc, char **argv)
 
     Display *dpy = XOpenDisplay(NULL);
     if (!dpy) {
-        fprintf(stderr, "Could not open X display :(\n");
+        fputs("Could not open X display :(\n", stderr);
         return 1;
     }
 
     int _;
     if (!XQueryExtension(dpy, "XTEST", &_, &_, &_)) {
-        fprintf(stderr,
-                "XTEST extension is not supported by X server, enable it in your X server configuration.\n");
+        fputs("XTEST extension is not supported by X server, ", stderr);
+        fputs("enable it in your X server configuration.\n", stderr);
         return 1;
     }
 
